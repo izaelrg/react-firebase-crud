@@ -13,6 +13,8 @@ export default function LinkForm(props) {
     const { name, value } = e.target
     // console.log(e.target.value);
     // console.log(name, value);
+
+    // borra los datos de los inputs
     setValues({...values, [name]: value})
   }
 
@@ -20,6 +22,8 @@ export default function LinkForm(props) {
     e.preventDefault();
     // console.log(values);
     props.addOrEditLink(values)
+
+    setValues({...initialStateValues})
   }
 
   return (
@@ -34,6 +38,7 @@ export default function LinkForm(props) {
           placeholder="https://someurl.com"
           name="url"
           onChange={handleInputChange}
+          value={values.url}
         />
       </div>
       <div className="form-group input-group">
@@ -46,6 +51,7 @@ export default function LinkForm(props) {
           placeholder="Website name"
           name="name"
           onChange={handleInputChange}
+          value={values.name}
         />
       </div>
       <div className="form-group">
@@ -57,6 +63,7 @@ export default function LinkForm(props) {
           className="form-control"
           placeholder="Write a description"
           onChange={handleInputChange}
+          value={values.description}
         ></textarea>
       </div>
       <button className="btn btn-primary btn-block">
